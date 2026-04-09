@@ -1,3 +1,5 @@
+
+
 const createElement = (arr) => {
     const htmlElements = arr.map((el) => `<span class ='btn'>${el}</span>`);
     return htmlElements.join(" ");
@@ -9,7 +11,6 @@ function pronounceWord(word) {
   window.speechSynthesis.speak(utterance);
 }
 
-pronounceWord("JavaScript");
 
 
 const manageSpinner = (status) => {

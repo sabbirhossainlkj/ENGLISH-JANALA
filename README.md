@@ -1,116 +1,181 @@
-# ENGLISH <img width="25px" src="./assets/logo.png" /> JANALA
+# 📚 Vocabulary Learning App
+
+An interactive Vocabulary Learning Web App that helps users learn English words with meanings, pronunciation, examples, and synonyms. Built using **Vanilla JavaScript**, API integration, and dynamic UI rendering.
 
 ---
 
-## ⚡ API Endpoints
+## 🚀 Features
 
-1. Get ⚡ All Levels
+* 📡 Fetch lessons dynamically from API
+* 📖 Load vocabulary based on lesson levels
+* 🔍 Search words globally
+* 🔊 Pronounce words using Speech API
+* 🪟 Modal with detailed word information
+* 📚 Synonyms display as interactive buttons
+* ⏳ Loading spinner for better UX
+* ❌ Empty state UI for no data
 
-```bash
-https://openapi.programming-hero.com/api/levels/all
+---
+
+## 🛠️ Tech Stack
+
+* **HTML5**
+* **CSS3 (Tailwind / Utility CSS)**
+* **JavaScript (ES6)**
+* **Fetch API**
+* **Web Speech API (SpeechSynthesisUtterance)**
+* **DOM Manipulation**
+
+---
+
+## 📁 Project Structure
+
+```
+📦 vocabulary-app
+ ┣ 📂 assets
+ ┃ ┣ alert-error.png
+ ┣ 📜 index.html
+ ┣ 📜 script.js
+ ┗ 📜 README.md
 ```
 
-1. Get ⚡ Words by Levels <br/>
-   https:// openapi.programming-hero.com/api/level/{id}
-
-```bash
-https://openapi.programming-hero.com/api/level/5
-```
-
-1. Get ⚡ Words Detail <br/>
-   https:// openapi.programming-hero.com/api/word/{id}
-
-```bash
-https://openapi.programming-hero.com/api/word/5
-```
-
-1. Get ⚡ All Words <br/>
-
-```bash
-https://openapi.programming-hero.com/api/words/all
-```
-
-# Work To do
-
-### 1. Show Levels on The UI
-
-- [ ] Show a center-aligned heading as Figma
-
 ---
 
-- [ ] Create dynamically generated buttons from **API-01** for each lesson
-- [ ] Lesson Buttons will be displayed on page load
+## ⚙️ Core Functionalities
 
----
+### 🔹 Load Lessons
 
-### 2. Show Word Cards Based on Level
-
-- [ ] Show a default text that will be displayed in the Vocabulary section initially
-- [ ] on Clicking a Specific Lesson Button Load All the words from **API-02**
-- [ ] Display all words for a selected lesson in a card format, showing:
-
-  - [ ] Word
-  - [ ] Word meaning & pronunciation
-  - [ ] Two buttons with relevant icons as per Figma
-
-- [ ] Show **\*No Word Found** message if no words exist for a lesson
-
----
-
-- [ ] Create functionality to highlight the active lesson button
-
----
-
-### 3. Use Different Color on The Active Level Button
-
-- [ ] After Successfully Loading words of a level , diffirentiate the button so user can understand which button is active
-
-### 4. Vocabulary Details
-
-- [ ] Create functionality to open a modal when clicking the details icon
-- [ ] Data will be load from **API-03**
-- [ ] modal will displays:
-  - [ ] Word with pronunciation
-  - [ ] Example sentence
-  - [ ] Synonyms
-  - [ ] A "Complete Learning" button to close the modal
-
-### 5. Handling Invalid Data
-
-- [ ] avoid displaying falsy values like `undefined` or `null`
-- [ ] display relevant words if no data is found
-
-### 6. Loading Spinner
-
-- [ ] Create a loading spinner that will be display when vocabulary is loading from API
-
-### 7. Implement Search Functionality
-
-- [ ] Take a input Box.
-- [ ] on Changing value It will Search word and show in the UI.
-- [ ] If anyone Do search reset active button
-
-### 8. Save Word Feature
-
-- [ ] in the UI of Card add a button `Heart icon`
-- [ ] on Clicking it. Store the Word in the Saved Box
-- [ ] Show Saved words in a Different Section.
-
-### 9. Speak your Vocabularies
-
-- [ ] Create functionality for voice pronunciation of vocabulary words
-- [ ] Use below function and implement on clicking sound icon
+Fetch all lesson levels from API:
 
 ```js
-function pronounceWord(word) {
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-EN"; // English
-  window.speechSynthesis.speak(utterance);
-}
+fetch('https://openapi.programming-hero.com/api/levels/all')
 ```
 
-For More >> you can explore this implementation 👉 [https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ](https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ)
+* Dynamically creates lesson buttons
+* Each button loads vocabulary for that level
 
 ---
-Bonus : How to create Private Repository for next assignments
-## Test Repo - :  https://classroom.github.com/a/Fgjib-lr
+
+### 🔹 Load Words by Level
+
+```js
+loadLevelWord(id);
+```
+
+* Fetches words by level
+* Highlights active lesson button
+* Shows spinner while loading
+
+---
+
+### 🔹 Display Words
+
+```js
+displayLevelWord(words);
+```
+
+* Dynamically renders word cards
+* Shows:
+
+  * Word
+  * Meaning
+  * Pronunciation
+* Handles empty state (no words available)
+
+---
+
+### 🔹 Word Details Modal
+
+```js
+loadWordDetail(id);
+```
+
+* Shows:
+
+  * Word + pronunciation
+  * Meaning
+  * Example sentence
+  * Synonyms
+
+---
+
+### 🔹 Search Functionality
+
+```js
+word.word.toLowerCase().includes(searchValue)
+```
+
+* Searches across all vocabulary
+* Displays matched results
+
+---
+
+### 🔹 Pronunciation Feature
+
+```js
+new SpeechSynthesisUtterance(word);
+```
+
+* Uses browser **Speech API**
+* Speaks the selected word
+
+---
+
+### 🔹 Spinner Control
+
+```js
+manageSpinner(true/false);
+```
+
+* Improves UX during API loading
+
+---
+
+## 🎨 UI Highlights
+
+* 🎯 Active lesson button styling
+* 📦 Clean card-based layout
+* 🪟 Modal popup design
+* ⚡ Fast & dynamic rendering
+* 🧠 Beginner-friendly interface
+
+---
+
+## ▶️ Getting Started
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/your-username/vocabulary-app.git
+```
+
+### 2️⃣ Open Project
+
+```bash
+cd vocabulary-app
+open index.html
+```
+
+---
+
+## 🔮 Future Improvements
+
+* 🔐 User authentication
+* 📊 Progress tracking system
+* ❤️ Favorite words feature
+* 🌐 Multi-language support
+* 📱 Fully responsive mobile UI
+
+---
+
+## 👨‍💻 Author
+
+**Sabbir Hossain**
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub and share it!
+
+---
